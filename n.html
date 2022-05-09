@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+
+<script type="text/javascript" language="javascript">
+    function onButtonClick() {
+      target = document.getElementById("output");
+      let num1 = document.forms.id_form1.id_numBox1.value;
+      let num2 = document.forms.id_form1.id_numBox2.value;
+      let num3 = document.forms.id_form1.id_numBox3.value;
+      let num4 = document.forms.id_form1.id_numBox4.value;
+      let result1 = document.forms.id_form1.id_resultBox1.value;
+      let result2 = document.forms.id_form1.id_resultBox2.value;
+      let alpha1 = document.forms.id_form1.alpha1.value;
+      let alpha2 = document.forms.id_form1.alpha2.value;
+      let alpha3 = document.forms.id_form1.alpha3.value;
+      let alpha4 = document.forms.id_form1.alpha4.value;
+      
+      //target.innerText = document.id_form1.id_textBox1.value;//これでもOK
+
+      for(let i=1;i<=10;i++) {
+            if(num1*i%num3 == 0) {
+              let multiply1 = i;
+              let multiply2 = num1 * i / num3;
+
+              let tentative1 = num2 * multiply1;
+              let tentative2 = num4 * multiply2;
+
+              let t_re1 = result1 * multiply1;
+              let t_re2 = result2 * multiply2;
+
+              let dir_num = tentative1 - tentative2;
+              let dir_result = t_re1 - t_re2;
+
+              let y = dir_result / dir_num;
+              let a = result1 - num2 * y;
+              let x = a / num1;
+
+              target.innerText = 'x=' + x + ',   y=' + y;
+              break;
+            }
+        }
+    }
+
+  </script>
+</head>
+<body>
+  <form name="form1" id="id_form1" action="">
+    <input name="numBox1" id="id_numBox1" type="text" value="" /> x  +
+
+    <input name="numBox2" id="id_numBox2" type="text" value="" /> y  =
+
+    <input name="resultBox1" id="id_resultBox1" type="text">
+    <br>
+    <input name="numBox3" id="id_numBox3" type="text" value="" /> x  +
+    <input name="numBox4" id="id_numBox4" type="text" value="" /> y  =
+    <input name="resultBox2" id="id_resultBox2" type="text">
+    <input type="button" value="Exec" onclick="onButtonClick();" />
+  </form>
+  <hr/>
+  <div id="output"></div>
+
+</body>
+</html>
